@@ -10,14 +10,17 @@
     var inputValue = $("#chat-input").val();
     // send the message to other users
     chat.sendMessage(inputValue);
-    // add the message to the list
-    $("#messages").append(
-      $("<li>").text(inputValue)
-    );
 
     // empty the input field
     $("#chat-input").val("");
 
     return false;
+  });
+
+  socket.on("message", function (message) {
+    // add the message to the list
+    $("#messages").append(
+      $("<li>").text(message)
+    );
   });
 })();
