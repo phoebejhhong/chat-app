@@ -27,4 +27,11 @@
       $("<li>").text(message)
     );
   });
+
+  socket.on("nicknameChangeResult", function (options) {
+    // notify nickname change
+    $("#messages").append(
+      $("<li>").text(options.message)
+    );
+  });
 })();
