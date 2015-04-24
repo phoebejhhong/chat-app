@@ -9,7 +9,11 @@
     // get the input
     var inputValue = $("#chat-input").val();
     // send the message to other users
-    chat.sendMessage(inputValue);
+    if (inputValue.slice(0,1) === "/") {
+      chat.processCommand(inputValue.split(" "));
+    } else {
+      chat.sendMessage(inputValue);
+    }
 
     // empty the input field
     $("#chat-input").val("");
